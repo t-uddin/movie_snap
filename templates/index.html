@@ -1,0 +1,51 @@
+<!--Home page on loging in = My Movies-->
+
+{% extends "layout.html" %}
+
+{% block title %}
+    My Movie
+{% endblock %}
+
+{% block main %}
+     <h1>MY MOVIES</h1>
+
+     <table class="table table-dark table-hover">
+         <tr>
+             <th>Movie</th>
+             <th>Rating</th>
+             <th></th>
+         </tr>
+
+         {% for movie in watchlist %}
+         <tr>
+            <th>
+                <a href="https://www.imdb.com/title/tt{{ movie.url_id }}">{{ movie.title }} </a>
+             </th>
+            <th>
+                 {{ movie.rating }}
+            </th>
+            <th>
+                <button class="openBtn btn btn-outline-secondary btn-sm" id = "updatebutton" onclick="openForm()"><strong>Update Rating</strong></button>
+                <div class="loginPopup">
+                  <div class="formPopup" id="popupForm">
+
+                    <form action="/update_rating/{{ movie.movie_id }}" method="post" class="formContainer">
+                      <input type="text" id="new_rating" placeholder="Enter New Rating" name="new_rating" required>
+                      <button type="submit" class="btn">Submit</button>
+                      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                    </form>
+
+                  </div>
+                </div>
+                <a href="/delete/{{ movie.movie_id }}" class="btn btn-outline-danger btn-sm">Delete</a>
+            </th>
+         </tr>
+         {% endfor %}
+
+         <!--Footer-->
+         <tr>
+             <td colspan="4"></td>
+             <!--<td> SUM </td>-->
+         </tr>
+     </table>
+{% endblock %}

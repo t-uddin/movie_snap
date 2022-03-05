@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <!--fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap" rel="stylesheet">
+        <!--fonts-->
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- https://favicon.io/emoji-favicons/money-mouth-face/ -->
+        <link href="/static/moviesnap.png" rel="icon">
+
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+        <!--Trash button-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="static/index.js"></script>
+
+        <title>Movie Snap: {% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body>
+    <!-- nav bar -->
+        <nav>
+                {% if session.user_id %}
+                    <ul>
+                        <li><a class="navbar-brand" href="/">MOVIE SNAP </a></li>
+                        <li><a class="active nav" href="/">My Movies </a></li>
+                        <li><a class="active nav" href="/addmovie">Add Movie</a></li>
+                        <li><a class="active nav" href="/mutuals">Match Me</a></li>
+                        <li style="float:right"><a class="active nav" href="/logout" >{{ session.username }}</a> </li>
+                        <li style="float:right"><a class="active nav" href="/logout" >Log Out</a> </li>
+                    </ul>
+                {% else %}
+                    <ul>
+                        <li><a class="navbar-brand" href="/">Movie Mutuals </a></li>
+                        <li><a class="active nav" href="/register">Register </a></li>
+                        <li><a class="nav" href="/login">Log in</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </nav>
+    <!-- nav bar -->
+
+
+
+
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-primary border text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+
+        <main class="container p-5">
+            {% block main %}{% endblock %}
+        </main>
+
+        <footer class="small text-center text-muted">
+            Data provided for free by <a href="https://www.imdb.com/interfaces/">IMDB</a>. View <a href="https://www.imdb.com/conditions?ref_=ft_cou">IMDB’s Terms of Use</a>.
+        </footer>
+
+    </body>
+
+</html>
+

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Movie
+{% endblock %}
+
+{% block main %}
+    <h1>ADD A MOVIE</h1>
+    <br>
+
+    <form action="/addmovie" method="post">
+        <div class="form-group">
+            <p>Paste the IMDB link to the movie you would like to add to your watchlist:</p>
+            <input autocomplete="off" autofocus class="form-control" name="movie_url" placeholder="Paste Movie URL" type="text">
+            <br>
+        <div class="form-group">
+            <br>
+            <p>On a scale of 1-5, how much do you want to watch this movie?</p>
+            <input autocomplete="off" autofocus class="form-control" name="rating" placeholder="Rating" type="integer">
+        <button class="btn btn-primary" type="submit">ADD</button>
+    </form>
+{% endblock %}

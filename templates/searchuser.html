@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Match Me
+{% endblock %}
+
+{% block main %}
+    <h1>ENTER A USERNAME</h1>
+    <br>
+    <p>Enter the username for the user you want to find movie matches with</p>
+    <br>
+
+    <form action="/mutuals" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+        <button class="btn btn-primary" type="submit">Match Us</button>
+    </form>
+{% endblock %}

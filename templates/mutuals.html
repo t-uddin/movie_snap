@@ -1,0 +1,36 @@
+<!--Home page on loging in = My Movies-->
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Mutual Movies
+{% endblock %}
+
+{% block main %}
+     <h1>HERE ARE YOUR MATCHES: </h1>
+     <br>
+
+     <table class="table table-dark table-hover">
+         <tr>
+             <th>Movie</th>
+             <th>Rating</th>
+         </tr>
+
+         {% for movie in matchlist %}
+         <tr>
+            <th>
+                <a href="https://www.imdb.com/title/tt{{ movie.url_id }}">{{ movie.title }} </a>
+             </th>
+            <th>
+                 {{ movie.rating }}
+            </th>
+         </tr>
+         {% endfor %}
+
+         <!--Footer-->
+         <tr>
+             <td colspan="4"></td>
+             <!--<td> SUM </td>-->
+         </tr>
+     </table>
+{% endblock %}
